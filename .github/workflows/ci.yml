@@ -1,0 +1,28 @@
+name: LeakTest
+
+on:
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout action
+        uses: actions/checkout@v4
+
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      - name: A Leak Step
+        id: leak
+        uses: AppSecEd/bad-actions@v1.0
+        with:
+          a_secret: ${{ secrets.A_SECRET }}
+          who-to-greet: 'dogeared'
+
+      - name: Get the output time
+        run: echo "The time was ${{ steps.leak.outputs.time }}"
