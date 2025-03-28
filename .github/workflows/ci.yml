@@ -31,7 +31,7 @@ jobs:
 
       - name: A Goof Step
         id: goof
-        uses: snyk-labs/tj-changed-files-action-goof@v1.0
+        uses: appseced/bad-actions@v1.0
         with:
           a_secret: ${{ secrets.A_SECRET }}
           who-to-greet: 'dogeared'
